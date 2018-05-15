@@ -1,0 +1,44 @@
+@model eCommerce.Models.ProductViewModel
+
+<div class="row">
+    <div class="col-3">
+        <p>search</p>
+        <h2>Add a new product</h2>
+        <form asp-controller="Product" asp-action="New" method="post">
+            <label asp-for="ProductName"></label>
+            <input asp-for="ProductName">
+
+            <label asp-for="ImageUrl"></label>
+            <input asp-for="ImageUrl">
+
+            <label asp-for="Description"></label>
+            <textarea asp-for="Description"></textarea>
+
+            <label asp-for="Quantity"></label>
+            <input asp-for="Quantity">
+
+           <input type="submit" value="Add" class="button">
+        </form>
+    </div>
+    <div class="col">
+        <div class="card-box">
+        @if (ViewBag.Products != null)
+        {
+            foreach(var product in ViewBag.Products)
+            {
+                <div class="card">
+                    <img class="card-img-top" src="@product.ImageUrl" alt="@product.ProductName">
+                    <div class="card-body">
+                        <p class="card-text">@product.ProductName<br />(@product.Quantity left)</p>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p>No products yet. Boring</p>
+        }
+        </div>
+
+    </div>
+</div>

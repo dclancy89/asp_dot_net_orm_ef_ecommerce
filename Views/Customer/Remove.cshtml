@@ -1,0 +1,9 @@
+<div class="row">
+    <div class="column">
+        <h1>Confirmation</h1>
+        <h3>Are you sure you want to remove the following Customer?</h3>
+        <h4 class="name">@ViewBag.Customer.CustomerName</h4>
+
+        <p><a href="/customers" class="button success">No, Return to Customers</a><a href="/customers/@ViewBag.Customer.Id/destroy" class="button error">Yes, Remove Customer</a></p>
+    </div>
+</div>

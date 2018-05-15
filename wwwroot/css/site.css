@@ -1,0 +1,58 @@
+/*Write all of your CSS here*/
+.new_customer h3 {
+    display: block;
+    width: 100%;
+}
+
+.button {
+    font-size: 1rem;
+    padding: 6px 18px;
+    transition: all 0.3s ease 0s;
+    margin: 1rem;
+}
+
+.button.error {
+    background-color: red;
+    color: white;
+    border: 2px solid red;
+    
+}
+
+.button.error:hover {
+    background-color: transparent;
+    color: red;
+    text-decoration: none;
+
+}
+
+.button.success {
+    background-color: green;
+    color: white;
+    border: 2px solid green;
+}
+
+.button.success:hover {
+    background-color: transparent;
+    color: green;
+    text-decoration: none;
+
+}
+
+h4.name {
+    padding: 1rem;
+}
+
+label {
+    display: block;
+}
+
+.card-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 15rem;
+    margin: 1rem;
+}

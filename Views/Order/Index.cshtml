@@ -1,0 +1,84 @@
+@model eCommerce.Models.OrderViewModel
+
+<div class="row">
+    <div class="col">
+        <h3>Add New Order</h3>
+        <form asp-controller="Order" asp-action="New" method="POST">
+            <label asp-for="CustomerId"></label>
+            <select asp-for="CustomerId">
+                @if(ViewBag.Customers != null)
+                {
+                        <option value="0">Select Customer...</option>
+                    @foreach(var customer in ViewBag.Customers)
+                    {
+                        <option value="@customer.Id">@customer.CustomerName</option>
+                    }
+                }
+                else
+                {
+                    <option value="0">No Customers...</option>
+                }
+            </select>
+
+            <label asp-for="Quantity"></label>
+            <select asp-for="Quantity">
+                @for(int i = 1; i <=5; i++)
+                {
+                    <option value="@i">@i</option>
+                }
+            </select>
+
+            <label asp-for="ProductId"></label>
+            <select asp-for="ProductId">
+                @if(ViewBag.Products != null)
+                {
+                        <option value="0">Select Product...</option>
+                    @foreach(var product in ViewBag.Products)
+                    {
+                        <option value="@product.Id">@product.ProductName</option>
+                    }
+                }
+                else
+                {
+                    <option value="0">No Products...</option>
+                }
+            </select>
+
+            <input type="submit" value="Order" class="button">
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Customer</th>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if(ViewBag.Orders != null)
+                {
+                    @foreach(var order in ViewBag.Orders)
+                    {
+                        <tr>
+                            <td>@order.Customer.CustomerName</td>
+                            <td>@order.Product.ProductName</td>
+                            <td>@order.Quantity</td>
+                            <td>@order.CreatedAt</td>
+                        </tr>
+                    }
+                    
+                }
+                else
+                {
+                    <tr><td>No Orders</td></tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

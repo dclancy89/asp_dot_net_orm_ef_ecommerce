@@ -1,0 +1,39 @@
+@model eCommerce.Models.CustomerViewModel
+
+<div class="row new_customer">
+    <h3>Add a New Customer</h3>
+    <form asp-controller="Customer" asp-action="New" method="POST">
+        <label asp-for="CustomerName"></label>
+        <input asp-for="CustomerName">
+        <input type="submit" value="Add">
+    </form>
+</div>
+
+<div class="row">
+    <table class="table customers">
+        <thead>
+            <tr>
+                <th>Customer Name</th>
+                <th>Created At</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if(@ViewBag.Customers != null)
+            {
+                @foreach(var customer in @ViewBag.Customers)
+                {
+                    <tr>
+                        <td>@customer.CustomerName</td>
+                        <td>@customer.CreatedAt</td>
+                        <td><a href="/customers/@customer.Id/remove" class="button error">Remove</a></td>
+                    </tr>
+                }
+            } 
+            else
+            {
+                <tr><td>No Customers Yet.</td></tr>
+            }
+        </tbody>
+    </table>
+</div>

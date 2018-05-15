@@ -1,0 +1,26 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="row">
+    <div class="col-3">Search</div>
+    <div class="col">
+       <div class="card-box">
+        @if (ViewBag.Products != null)
+        {
+            foreach(var product in ViewBag.Products)
+            {
+                <div class="card">
+                    <img class="card-img-top" src="@product.ImageUrl" alt="@product.ProductName">
+                    <div class="card-body">
+                        <p class="card-text">@product.ProductName<br />(@product.Quantity left)</p>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p>No products yet. Boring</p>
+        }
+        </div>
+    </div>
+</div>
